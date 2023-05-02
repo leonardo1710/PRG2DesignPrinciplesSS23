@@ -8,7 +8,7 @@ The benefits of following the Open-Closed Principle include increased flexibilit
 ## Description
 Let's say we have a game that has different types of characters, such as warriors, mages, and archers. Each type of character has a unique attack style, and we want to be able to add new types of characters without modifying the existing code.
 Furthermore, each concrete type of character has a special ability. For example, a warrior can use a shield to block incoming attacks, while a mage can cast spells to heal itself.
-A common class that represents all characters is the `Character` class: 
+A common class that represents all characters is the `Character` class:
 
 ```java
 public class Character {
@@ -23,9 +23,9 @@ public class Character {
     }
 
     public void attack(Character target){
-        target.health -= this.attackDamage;
+        target.setHealth(target.getHealth() - this.getAttackDamage());
     }
-    
+
     // getters and setters
 }
 ```
