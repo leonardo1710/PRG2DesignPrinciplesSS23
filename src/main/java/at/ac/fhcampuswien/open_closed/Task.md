@@ -6,30 +6,111 @@ In other words, new functionality can be added to the system without changing th
 The benefits of following the Open-Closed Principle include increased flexibility, maintainability, and reusability of code. It also allows for easier testing and reduces the risk of introducing bugs or unintended consequences when modifying existing code.
 
 ## Description
-Suppose we have an application that sends notifications to users. We want to be able to send notifications via different channels, such as email, SMS, and push notifications. However, we also want to be able to add new notification channels in the future without modifying the existing code.
-
-One way to implement this is to create a ``Notification`` class with methods for sending notifications via each channel:
+Suppose we have a Character class hierarchy that represents various types of characters in a video game:
 
 ```java
-public class Notification {
-    public void sendEmail(String recipient, String message) {
-        // implementation for sending email notification
+public abstract class Character {
+    private String name;
+    private int health;
+    private int attackDamage;
+
+    public Character(String name, int health, int attackDamage) {
+        this.name = name;
+        this.health = health;
+        this.attackDamage = attackDamage;
     }
 
-    public void sendSMS(String recipient, String message) {
-        // implementation for sending SMS notification
+    public abstract void attack(Character target);
+    
+    // getters and setters
+}
+
+public class Warrior extends Character {
+    public Warrior(String name, int health, int attackDamage) {
+        super(name, health, attackDamage);
     }
 
-    public void sendPushNotification(String recipient, String message) {
-        // implementation for sending push notification
+    @Override
+    public void attack(Character target) {
+        // code to perform a warrior attack
     }
+}
+
+public class Mage extends Character {
+    public Mage(String name, int health, int attackDamage) {
+        super(name, health, attackDamage);
+    }
+
+    @Override
+    public void attack(Character target) {
+        // code to perform a mage attack
+    }
+}
+```
+We want to add support for new types of characters where each type can have special abilities - without modifying the existing code.
+Eg.: Some characters should be able to do physical damage attacks, while others can do magical damage attacks. Some characters can have special abilities like healing or shielding. And so on..
+
+In our ``Character`` class we can add those abilities like so:
+```java
+public abstract class Character {
+    //fields
+    //...other methods
+
+    public abstract void specialMagicAttack(Character target);
+
+    public abstract void specialPhysicalAttack(Character target);
 }
 ```
 
 <div style="background-color: #ffcccc; padding: 10px; border-radius: 5px;">
-    <b>Warning:</b> This is not a good solution because it violates the Open-Closed Principle. If we want to add a new notification channel, we would have to modify the `Notification` class by adding a new method. This would break the existing code and require us to retest the entire application.
+    <b>Warning:</b> But this is not a good solution because we are violating the Open-Closed Principle. We are modifying the existing code instead of extending it.
 </div>
 
+For example if we want to add a new type of character that can do a third type of damage, we would have to modify the `Character` class and add a new method for that type of character.
+Also, characters which should not have any special abilities would still have those methods.
+
 ## Tasks
-To fix this violation, create a separate ``NotificationSender`` interface which has a method called ``sendNotification`` that takes a recipient and a message as input. 
-Each notification channel can then implement this interface to provide its own way of sending notifications.
+
+### 1. Create an abstraction 
+
+To fix this violation, create a ``ChracterType`` interface that defines the special abilities of a character, eg.: 
+
+```java
+public interface CharacterType {
+    void attack(Character attacker, Character target);
+    void specialAbility(Character character);
+}
+```
+
+### 2. Create a concrete implementation
+Create concrete implementations for each character type that defines the special abilities of that type, eg.:
+
+```java
+public class WarriorType implements CharacterType {
+    @Override
+    public void attack(Character attacker, Character target) {
+        // code to perform a warrior attack
+    }
+
+    @Override
+    public void specialAbility(Character character) {
+        // code to perform a warrior's special ability
+    }
+}
+```
+
+### 3. Refactor the `Character` class
+Now, instead of defining the specific behavior for each type of character within the Character class, create instances of the appropriate CharacterType class and pass them to the ``Character`` constructor:
+```java
+public class Character {
+    //...fields
+    public Character(String name, int health, int attackDamage, CharacterType type) {
+        this.name = name;
+        this.health = health;
+        this.attackDamage = attackDamage;
+        this.type = type;
+    }
+}
+```
+
+Finally, adapt the ``Character`` class to use the provided implementations from ``CharacterType`` interface.
