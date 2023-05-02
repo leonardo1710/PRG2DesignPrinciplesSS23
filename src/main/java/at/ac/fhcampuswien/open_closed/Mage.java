@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.open_closed;
 
-public class Mage extends Character {
+public class Mage extends Character implements HealingAbility {
+
     public Mage(String name, int health, int attackDamage) {
         super(name, health, attackDamage);
     }
@@ -12,13 +13,13 @@ public class Mage extends Character {
     }
 
     @Override
-    public void specialMagicAttack(Character target) {
-        System.out.println("Mage uses special magic attack on " + target.getName());
-        target.setHealth(target.getHealth() - this.getAttackDamage() * 2);
+    public void useSpecialAbility(Character character) {
+        heal(character);
     }
 
     @Override
-    public void specialPhysicalAttack(Character target) {
-        System.out.println("Mage cannot use physical attacks!");
+    public void heal(Character character) {
+        System.out.println("Mage heals " + character.getName());
+        character.setHealth(character.getHealth() + 10);
     }
 }

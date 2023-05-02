@@ -27,9 +27,20 @@ public abstract class Character {
         return attackDamage;
     }
 
+    public void setAttackDamage(int attackDamage) {
+        this.attackDamage = attackDamage;
+    }
+
     public abstract void attack(Character target);
 
-    public abstract void specialMagicAttack(Character target);
+    public abstract void useSpecialAbility(Character character);
 
-    public abstract void specialPhysicalAttack(Character target);
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", attackDamage=" + attackDamage +
+                '}';
+    }
 }
