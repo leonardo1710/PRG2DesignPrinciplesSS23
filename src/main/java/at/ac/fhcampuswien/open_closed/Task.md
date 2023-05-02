@@ -6,10 +6,12 @@ In other words, new functionality can be added to the system without changing th
 The benefits of following the Open-Closed Principle include increased flexibility, maintainability, and reusability of code. It also allows for easier testing and reduces the risk of introducing bugs or unintended consequences when modifying existing code.
 
 ## Description
-Suppose we have a Character class hierarchy that represents various types of characters in a video game:
+Let's say we have a game that has different types of characters, such as warriors, mages, and archers. Each type of character has a unique attack style, and we want to be able to add new types of characters without modifying the existing code.
+Furthermore, each concrete type of character has a special ability. For example, a warrior can use a shield to block incoming attacks, while a mage can cast spells to heal itself.
+A common class that represents all characters is the `Character` class:
 
 ```java
-public abstract class Character {
+public class Character {
     private String name;
     private int health;
     private int attackDamage;
@@ -20,45 +22,22 @@ public abstract class Character {
         this.attackDamage = attackDamage;
     }
 
-    public abstract void attack(Character target);
+    public void attack(Character target){
+        target.setHealth(target.getHealth() - this.getAttackDamage());
+    }
     
     // getters and setters
 }
-
-public class Warrior extends Character {
-    public Warrior(String name, int health, int attackDamage) {
-        super(name, health, attackDamage);
-    }
-
-    @Override
-    public void attack(Character target) {
-        // code to perform a warrior attack
-    }
-}
-
-public class Mage extends Character {
-    public Mage(String name, int health, int attackDamage) {
-        super(name, health, attackDamage);
-    }
-
-    @Override
-    public void attack(Character target) {
-        // code to perform a mage attack
-    }
-}
 ```
-We want to add support for new types of characters where each type can have special abilities - without modifying the existing code.
-Eg.: Some characters should be able to do physical damage attacks, while others can do magical damage attacks. Some characters can have special abilities like healing or shielding. And so on..
-
-In our ``Character`` class we can add those abilities like so:
+In our ``Character`` class we could add those attacks and abilities like so:
 ```java
 public abstract class Character {
     //fields
     //...other methods
 
-    public abstract void specialMagicAttack(Character target);
+    public abstract void specialMagicHeal(Character target);
 
-    public abstract void specialPhysicalAttack(Character target);
+    public abstract void specialWarriorBlock(Character character);
 }
 ```
 
@@ -66,51 +45,7 @@ public abstract class Character {
     <b>Warning:</b> But this is not a good solution because we are violating the Open-Closed Principle. We are modifying the existing code instead of extending it.
 </div>
 
-For example if we want to add a new type of character that can do a third type of damage, we would have to modify the `Character` class and add a new method for that type of character.
-Also, characters which should not have any special abilities would still have those methods.
-
 ## Tasks
+Make use of abstraction to make your code open for extension but closed for modification.
 
-### 1. Create an abstraction
-
-To fix this violation, create a ``ChracterType`` interface that defines the special abilities of a character, eg.:
-
-```java
-public interface CharacterType {
-    void attack(Character attacker, Character target);
-    void specialAbility(Character character);
-}
-```
-
-### 2. Create a concrete implementation
-Create concrete implementations for each character type that defines the special abilities of that type, eg.:
-
-```java
-public class WarriorType implements CharacterType {
-    @Override
-    public void attack(Character attacker, Character target) {
-        // code to perform a warrior attack
-    }
-
-    @Override
-    public void specialAbility(Character character) {
-        // code to perform a warrior's special ability
-    }
-}
-```
-
-### 3. Refactor the `Character` class
-Now, instead of defining the specific behavior for each type of character within the Character class, create instances of the appropriate CharacterType class and pass them to the ``Character`` constructor:
-```java
-public class Character {
-    //...fields
-    public Character(String name, int health, int attackDamage, CharacterType type) {
-        this.name = name;
-        this.health = health;
-        this.attackDamage = attackDamage;
-        this.type = type;
-    }
-}
-```
-
-Finally, adapt the ``Character`` class to use the provided implementations from ``CharacterType`` interface.
+To test if your solution does not violate the open-closed principle, try to add a new type of character. If you do not have to modify the existing code, you have successfully implemented the open-closed principle.

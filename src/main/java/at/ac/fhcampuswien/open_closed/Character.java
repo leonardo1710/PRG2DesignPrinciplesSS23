@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.open_closed;
 
-public abstract class Character {
+public class Character {
     private String name;
     private int health;
     private int attackDamage;
@@ -27,9 +27,8 @@ public abstract class Character {
         return attackDamage;
     }
 
-    public abstract void attack(Character target);
-
-    public abstract void specialMagicAttack(Character target);
-
-    public abstract void specialPhysicalAttack(Character target);
+    public void attack(Character target) {
+        System.out.println("Character attacks " + target.getName());
+        target.setHealth(target.getHealth() - this.getAttackDamage());
+    }
 }
