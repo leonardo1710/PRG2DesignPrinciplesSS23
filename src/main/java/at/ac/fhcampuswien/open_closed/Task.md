@@ -25,7 +25,7 @@ public class Character {
     public void attack(Character target){
         target.setHealth(target.getHealth() - this.getAttackDamage());
     }
-
+    
     // getters and setters
 }
 ```
