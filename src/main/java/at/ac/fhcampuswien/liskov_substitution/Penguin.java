@@ -1,13 +1,8 @@
 package at.ac.fhcampuswien.liskov_substitution;
 
-public class Penguin extends Bird {
+public class Penguin extends Bird implements ICanSwim, ICanDive {
     public Penguin(String name, String species,String region) {
         super(name, species, region);
-    }
-
-    @Override
-    public void fly() {
-        throw new UnsupportedOperationException("Penguins can't fly!");
     }
 
     @Override

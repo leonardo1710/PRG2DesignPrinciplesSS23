@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.liskov_substitution;
 
-public class Sparrow extends Bird {
+public class Sparrow extends Bird implements ICanFly {
     public Sparrow(String name, String species, String region) {
         super(name, species, region);
     }
@@ -8,16 +8,6 @@ public class Sparrow extends Bird {
     @Override
     public void fly() {
         System.out.println("Sparrow is flying!");
-    }
-
-    @Override
-    public void swim() {
-        throw new UnsupportedOperationException("Sparrows can't swim!");
-    }
-
-    @Override
-    public void dive() {
-        throw new UnsupportedOperationException("Sparrows can't dive!");
     }
 
 }

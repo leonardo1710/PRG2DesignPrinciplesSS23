@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.liskov_substitution;
 
-public class Duck extends Bird {
+public class Duck extends Bird implements ICanSwim, ICanFly, ICanDive {
     public Duck(String name, String species, String region) {
         super(name, species, region);
     }

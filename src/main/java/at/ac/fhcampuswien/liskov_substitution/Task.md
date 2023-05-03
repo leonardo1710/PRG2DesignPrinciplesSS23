@@ -76,7 +76,7 @@ You can find more information and code examples about the LSP [here](https://www
 ### Code Smells
 How to identify if a subtype is not substitutable for its supertype?
   * The subtype throws exceptions for a behavior it cannot fulfill (e.g. ``Penguin`` throws an exception for the ``fly()`` method)
-  * The subtype implements methods that do nothing or throw exceptions (e.g. ``Penguin`` implements the ``fly()`` method but does nothing)
+  * The subtype implements methods that do nothing (e.g. ``Penguin`` implements the ``fly()`` method but does nothing)
   * The client knows the subtype and has to handle it differently (e.g. the client has to check if the bird is a ``Penguin`` and handle it differently)
 
 ## Tasks

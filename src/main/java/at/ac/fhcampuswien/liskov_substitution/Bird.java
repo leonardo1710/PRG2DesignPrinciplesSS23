@@ -10,10 +10,4 @@ public abstract class Bird {
         this.species = species;
         this.region = region;
     }
-
-    public abstract void fly();
-
-    public abstract void swim();
-
-    public abstract void dive();
 }
