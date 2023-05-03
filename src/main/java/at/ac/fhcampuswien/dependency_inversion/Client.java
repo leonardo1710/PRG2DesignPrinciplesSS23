@@ -1,9 +1,9 @@
 package at.ac.fhcampuswien.dependency_inversion;
 
 public class Client {
-    private Server server;
+    private IServer server;
 
-    public Client(Server server) {
+    public Client(IServer server) {
         this.server = server;
     }
 
