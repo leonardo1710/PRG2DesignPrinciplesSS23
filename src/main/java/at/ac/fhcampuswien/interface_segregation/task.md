@@ -44,7 +44,7 @@ public class EmailNotificationService implements NotificationService {
 ```
 
 ## Tasks
-Apply the Interface Segregation principle so that specific clients, e.g. ``EmailService``, ``SMSService``, and ``PushNotificationService``, can interact with the notification service through interfaces that are specific to their needs.
+Apply the Interface Segregation principle so that specific clients, e.g. ``EmailClient``, ``SMSClient``, and ``PushNotificationClient``, can interact with the notification service through interfaces that are specific to their needs.
 
 ## Discussion
 What are the benefits and drawbacks of following the Interface Segregation Principle in software design? 

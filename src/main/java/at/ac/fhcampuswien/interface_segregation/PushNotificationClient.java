@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.interface_segregation;
 
-public class PushNotificationService implements NotificationService{
+public class PushNotificationClient implements NotificationService{
     @Override
     public void sendEmail(String address, String subject, String message) {
         throw new UnsupportedOperationException("PushNotificationService does not support sending emails");

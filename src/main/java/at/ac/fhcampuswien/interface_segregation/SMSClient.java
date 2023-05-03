@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.interface_segregation;
 
-public class SMSService implements NotificationService {
+public class SMSClient implements NotificationService {
     @Override
     public void sendEmail(String address, String subject, String message) {
         throw new UnsupportedOperationException("SMSNotificationService does not support sending emails");

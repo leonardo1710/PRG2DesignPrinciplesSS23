@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.interface_segregation;
 
-public class EmailService implements NotificationService {
+public class EmailClient implements NotificationService {
     @Override
     public void sendEmail(String address, String subject, String message) {
         // send email
