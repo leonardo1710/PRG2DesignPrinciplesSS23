@@ -6,7 +6,8 @@ The principle was introduced by Barbara Liskov in 1987 and is considered to be o
 
 The LSP helps to ensure that code is extensible, maintainable, and scalable by promoting code reuse and reducing the likelihood of unexpected behavior in software systems. By adhering to the LSP, software developers can write more robust and flexible code that can accommodate changing requirements and new functionality over time.
 
-<img src="https://blog.codavel.com/hubfs/Imported_Blog_Media/LiskovSubtitutionPrinciple_Simon.jpg">
+<img alt="Liskov Substitution Principle" src="https://blog.codavel.com/hubfs/Imported_Blog_Media/LiskovSubtitutionPrinciple_Simon.jpg">
+<div align="center">Source: <a href="https://blog.codavel.com/2018/09/25/liskov-substitution-principle">Codavel Blog (2023)</a></div>
 
 ## Description
 Our application needs to handle different kinds of birds. Therefore, it was decided to create an abstract class ``Bird`` which provides the basic functionality for all birds. 
@@ -71,7 +72,7 @@ To ensure the LSP is not violated, the following rules must be followed:
   * Invariants of the supertype must be preserved in a subtype
   * History constraint of the supertype must be preserved in a subtype
 
-You can find more information and code examples about the LSP [here](https://www.baeldung.com/java-liskov-substitution-principle).
+You can find more information and code examples about the LSP [here](https://www.baeldung.com/java-liskov-substitution-principle) and [here](https://blog.codavel.com/2018/09/25/liskov-substitution-principle).
 
 ### Code Smells
 How to identify if a subtype is not substitutable for its supertype?
