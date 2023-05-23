@@ -1,5 +1,8 @@
 package at.ac.fhcampuswien.liskov_substitution;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class App {
     public static void main(String[] args) {
         // Concrete subclasses of Bird
@@ -22,6 +25,19 @@ public class App {
         ICanFly duckFly = new Duck("Donald", "Mallard", "Europe");
         sparrowFly.fly();
         duckFly.fly();
+
+        Bird penguin1 = new Penguin("Pingu", "Emperor Penguin",  "Antarctica");
+        Bird sparrow1 = new Sparrow("Jack", "House Sparrow", "Europe");
+        Bird duck1 = new Duck("Donald", "Mallard", "Europe");
+
+        List<Bird> birds = new ArrayList<>();
+        birds.add(penguin1);
+        birds.add(sparrow1);
+        birds.add(duck1);
+
+        for(Bird bird : birds) {
+            bird.eat();
+        }
     }
 }
 

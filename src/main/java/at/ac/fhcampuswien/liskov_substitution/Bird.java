@@ -10,4 +10,8 @@ public abstract class Bird {
         this.species = species;
         this.region = region;
     }
+
+    public void eat() {
+        System.out.println(this.getClass().getSimpleName() + " is eating.");
+    }
 }
