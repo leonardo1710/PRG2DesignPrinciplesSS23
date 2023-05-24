@@ -22,5 +22,3 @@ Furthermore, emails should be formatted before they are sent to the recipient. F
 * Identify the responsibilities of the ``EmailFormatter`` class.
 * Refactor the ``Email`` class so that it has only one responsibility.
 * Refactor the ``EmailFormatter`` class so that it has only one responsibility.
-
-## Discussion
