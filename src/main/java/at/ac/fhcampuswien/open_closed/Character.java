@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien.open_closed;
 
 public abstract class Character {
-    private String name;
+    private final String name;
     private int health;
     private int attackDamage;
 
@@ -9,6 +9,19 @@ public abstract class Character {
         this.name = name;
         this.health = health;
         this.attackDamage = attackDamage;
+    }
+
+    public abstract void attack(Character target);
+
+    public abstract void useSpecialAbility(Character character);
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", health=" + health +
+                ", attackDamage=" + attackDamage +
+                '}';
     }
 
     public String getName() {
@@ -31,16 +44,4 @@ public abstract class Character {
         this.attackDamage = attackDamage;
     }
 
-    public abstract void attack(Character target);
-
-    public abstract void useSpecialAbility(Character character);
-
-    @Override
-    public String toString() {
-        return "Character{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", attackDamage=" + attackDamage +
-                '}';
-    }
 }

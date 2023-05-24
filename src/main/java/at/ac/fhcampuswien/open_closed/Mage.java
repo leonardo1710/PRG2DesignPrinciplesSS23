@@ -19,7 +19,7 @@ public class Mage extends Character implements HealingAbility {
 
     @Override
     public void heal(Character character) {
-        System.out.println("Mage heals " + character.getName());
+        System.out.println(character.getName() + " heals itself.");
         character.setHealth(character.getHealth() + 10);
     }
 }
