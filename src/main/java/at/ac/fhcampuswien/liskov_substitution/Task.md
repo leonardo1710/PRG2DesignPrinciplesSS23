@@ -81,8 +81,11 @@ How to identify if a subtype is not substitutable for its supertype?
   * The client knows the subtype and has to handle it differently (e.g. the client has to check if the bird is a ``Penguin`` and handle it differently)
 
 ## Tasks
-Refactor the provided classes and/or create correct abstractions so that they fulfill the Liskov Substitution Principle. 
+Refactor the provided classes and/or create correct abstractions/compositions so that they fulfill the Liskov Substitution Principle.
 It should be possible to handle all subtypes of ``Bird`` in the same way without causing errors or unexpected behavior.
-Use inheritance and abstraction to achieve this.
+Use inheritance, abstraction and/or composition to achieve this.
+
+> Note: There are multiple ways to solve this task, having different advantages and disadvantages.
+
 
 
